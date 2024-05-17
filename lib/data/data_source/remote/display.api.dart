@@ -15,6 +15,9 @@ abstract class DisplayApi {
   @GET('/api/menus/{mall_type}')
   Future<ResponseWrapper<List<MenuDto>>> getMenusByMallType(@Path('mall_type') String mallType);
 
-  @GET('/api/view_modules/{tab_id}')
-  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulesByTabId(@Path('tab_id') int tabId);
+  @GET('/api/view-modules/{tab_id}/{page}')
+  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulesByTabId(
+    @Path('tab_id') int tabId,
+    @Path('page') int page,
+  );
 }

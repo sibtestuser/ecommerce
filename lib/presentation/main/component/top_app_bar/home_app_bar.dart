@@ -1,3 +1,5 @@
+import 'package:go_router/go_router.dart';
+
 import '../../../../core/theme/constant/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +8,8 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/theme/custom/custom_app_bar.dart';
 import '../../../../core/theme/custom/custom_font_weight.dart';
 import '../../../../core/theme/custom/custom_theme.dart';
+import '../../../pages/cart_list/bloc/cart_list_bloc/cart_list_bloc.dart';
+import '../../../routes/route_path.dart';
 import '../../cubit/mall_type_cubic.dart';
 import 'widgets/svg_icon_button.dart';
 
@@ -24,6 +28,7 @@ class HomeAppBar extends StatelessWidget {
               icon: AppIcons.mainLogo,
               color: state.theme.logoColor,
               padding: 8,
+              onPressed: null,
             ),
             // leading: Padding(
             //   padding: const EdgeInsets.all(8.0),
@@ -74,8 +79,37 @@ class HomeAppBar extends StatelessWidget {
               duration: Duration(milliseconds: 400),
             ),
             actions: [
-              SvgIconButton(icon: AppIcons.location, color: state.theme.iconColor),
-              SvgIconButton(icon: AppIcons.cart, color: state.theme.iconColor),
+              SvgIconButton(
+                icon: AppIcons.location,
+                color: state.theme.iconColor,
+                onPressed: null,
+              ),
+              Stack(
+                children: [
+                  SvgIconButton(
+                    icon: AppIcons.cart,
+                    color: state.theme.iconColor,
+                    onPressed: () => context.push(RoutePath.cart_list),
+                  ),
+                  Positioned(
+                    top: 2,
+                    right: 0,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: state.theme.badgeBgColor,
+                      ),
+                      width: 13,
+                      height: 13,
+                      child: Center(
+                          child: Text(
+                        '${context.watch<CartListBloc>().state.cartList.length}',
+                        style: TextStyle(color: state.theme.badgeNumColor, fontSize: 9, fontWeight: FontWeight.bold),
+                      )),
+                    ),
+                  ),
+                ],
+              ),
             ],
             backgroundColor: Colors.transparent,
             centerTitle: true,

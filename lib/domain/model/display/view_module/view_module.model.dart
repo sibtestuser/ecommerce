@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../product_info/product_info.model.dart';
+
 part 'view_module.model.freezed.dart';
 part 'view_module.model.g.dart';
 
@@ -11,6 +13,9 @@ class ViewModule with _$ViewModule {
     required String title,
     required String subTitle,
     required String imageUrl,
+    required int time,
+    required List<ProductInfo> products,
+    required List<String> tabs,
   }) = _ViewModule;
 
   factory ViewModule.fromJson(Map<String, dynamic> json) => _$ViewModuleFromJson(json);

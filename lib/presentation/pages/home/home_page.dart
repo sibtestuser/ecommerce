@@ -3,12 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/utils/constant.dart';
 import '../../../core/utils/dialog/common_dialog.dart';
+import '../../../dependency_injection.dart';
 import '../../../domain/usecase/display/display.usecase.dart';
 import '../../../service_locator.dart';
 import '../../main/cubit/mall_type_cubic.dart';
 import 'bloc/menu_bloc/menu_bloc.dart';
 import 'component/global_nav/global_nav_bar.dart';
 import 'component/global_nav/globar_nav_bar_view.dart';
+import 'component/view_module_list/view_module_factory/view_module_factory.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,7 +19,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MallTypeCubit, MallType>(builder: (context, state) {
       return BlocProvider(
-        create: (_) => MenuBloc(locator<DisplayUsecase>())..add(MenuInitialized(state)),
+        create: (_) => getIt<MenuBloc>()..add(MenuInitialized(state)),
         child: const HomePageView(),
       );
     });

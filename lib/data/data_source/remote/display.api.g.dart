@@ -55,7 +55,9 @@ class _DisplayApi implements DisplayApi {
 
   @override
   Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulesByTabId(
-      int tabId) async {
+    int tabId,
+    int page,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -68,7 +70,7 @@ class _DisplayApi implements DisplayApi {
     )
             .compose(
               _dio.options,
-              '/api/view_modules/${tabId}',
+              '/api/view-modules/${tabId}/${page}',
               queryParameters: queryParameters,
               data: _data,
             )

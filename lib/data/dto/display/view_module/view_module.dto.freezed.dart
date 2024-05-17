@@ -20,10 +20,13 @@ ViewModuleDto _$ViewModuleDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ViewModuleDto {
-  String get type => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String get subtitle => throw _privateConstructorUsedError;
-  String get imgUrl => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get subtitle => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
+  int? get time => throw _privateConstructorUsedError;
+  List<ProductInfoDto> get products => throw _privateConstructorUsedError;
+  List<String> get tabs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +40,14 @@ abstract class $ViewModuleDtoCopyWith<$Res> {
           ViewModuleDto value, $Res Function(ViewModuleDto) then) =
       _$ViewModuleDtoCopyWithImpl<$Res, ViewModuleDto>;
   @useResult
-  $Res call({String type, String title, String subtitle, String imgUrl});
+  $Res call(
+      {String? type,
+      String? title,
+      String? subtitle,
+      String? imageUrl,
+      int? time,
+      List<ProductInfoDto> products,
+      List<String> tabs});
 }
 
 /// @nodoc
@@ -53,28 +63,43 @@ class _$ViewModuleDtoCopyWithImpl<$Res, $Val extends ViewModuleDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
-    Object? title = null,
-    Object? subtitle = null,
-    Object? imgUrl = null,
+    Object? type = freezed,
+    Object? title = freezed,
+    Object? subtitle = freezed,
+    Object? imageUrl = freezed,
+    Object? time = freezed,
+    Object? products = null,
+    Object? tabs = null,
   }) {
     return _then(_value.copyWith(
-      type: null == type
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
+              as String?,
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      subtitle: null == subtitle
+              as String?,
+      subtitle: freezed == subtitle
           ? _value.subtitle
           : subtitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      imgUrl: null == imgUrl
-          ? _value.imgUrl
-          : imgUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as int?,
+      products: null == products
+          ? _value.products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<ProductInfoDto>,
+      tabs: null == tabs
+          ? _value.tabs
+          : tabs // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -87,7 +112,14 @@ abstract class _$$ViewModuleDtoImplCopyWith<$Res>
       __$$ViewModuleDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String type, String title, String subtitle, String imgUrl});
+  $Res call(
+      {String? type,
+      String? title,
+      String? subtitle,
+      String? imageUrl,
+      int? time,
+      List<ProductInfoDto> products,
+      List<String> tabs});
 }
 
 /// @nodoc
@@ -101,60 +133,102 @@ class __$$ViewModuleDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
-    Object? title = null,
-    Object? subtitle = null,
-    Object? imgUrl = null,
+    Object? type = freezed,
+    Object? title = freezed,
+    Object? subtitle = freezed,
+    Object? imageUrl = freezed,
+    Object? time = freezed,
+    Object? products = null,
+    Object? tabs = null,
   }) {
     return _then(_$ViewModuleDtoImpl(
-      type: null == type
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
+              as String?,
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      subtitle: null == subtitle
+              as String?,
+      subtitle: freezed == subtitle
           ? _value.subtitle
           : subtitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      imgUrl: null == imgUrl
-          ? _value.imgUrl
-          : imgUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as int?,
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<ProductInfoDto>,
+      tabs: null == tabs
+          ? _value._tabs
+          : tabs // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _$ViewModuleDtoImpl
     with DiagnosticableTreeMixin
     implements _ViewModuleDto {
   const _$ViewModuleDtoImpl(
-      {this.type = '', this.title = '', this.subtitle = '', this.imgUrl = ''});
+      {this.type = '',
+      this.title = '',
+      this.subtitle = '',
+      this.imageUrl = '',
+      this.time = -1,
+      final List<ProductInfoDto> products = const <ProductInfoDto>[],
+      final List<String> tabs = const <String>[]})
+      : _products = products,
+        _tabs = tabs;
 
   factory _$ViewModuleDtoImpl.fromJson(Map<String, dynamic> json) =>
       _$$ViewModuleDtoImplFromJson(json);
 
   @override
   @JsonKey()
-  final String type;
+  final String? type;
   @override
   @JsonKey()
-  final String title;
+  final String? title;
   @override
   @JsonKey()
-  final String subtitle;
+  final String? subtitle;
   @override
   @JsonKey()
-  final String imgUrl;
+  final String? imageUrl;
+  @override
+  @JsonKey()
+  final int? time;
+  final List<ProductInfoDto> _products;
+  @override
+  @JsonKey()
+  List<ProductInfoDto> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  final List<String> _tabs;
+  @override
+  @JsonKey()
+  List<String> get tabs {
+    if (_tabs is EqualUnmodifiableListView) return _tabs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tabs);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ViewModuleDto(type: $type, title: $title, subtitle: $subtitle, imgUrl: $imgUrl)';
+    return 'ViewModuleDto(type: $type, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, time: $time, products: $products, tabs: $tabs)';
   }
 
   @override
@@ -165,7 +239,10 @@ class _$ViewModuleDtoImpl
       ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('subtitle', subtitle))
-      ..add(DiagnosticsProperty('imgUrl', imgUrl));
+      ..add(DiagnosticsProperty('imageUrl', imageUrl))
+      ..add(DiagnosticsProperty('time', time))
+      ..add(DiagnosticsProperty('products', products))
+      ..add(DiagnosticsProperty('tabs', tabs));
   }
 
   @override
@@ -177,12 +254,24 @@ class _$ViewModuleDtoImpl
             (identical(other.title, title) || other.title == title) &&
             (identical(other.subtitle, subtitle) ||
                 other.subtitle == subtitle) &&
-            (identical(other.imgUrl, imgUrl) || other.imgUrl == imgUrl));
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.time, time) || other.time == time) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality().equals(other._tabs, _tabs));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, type, title, subtitle, imgUrl);
+  int get hashCode => Object.hash(
+      runtimeType,
+      type,
+      title,
+      subtitle,
+      imageUrl,
+      time,
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_tabs));
 
   @JsonKey(ignore: true)
   @override
@@ -200,22 +289,31 @@ class _$ViewModuleDtoImpl
 
 abstract class _ViewModuleDto implements ViewModuleDto {
   const factory _ViewModuleDto(
-      {final String type,
-      final String title,
-      final String subtitle,
-      final String imgUrl}) = _$ViewModuleDtoImpl;
+      {final String? type,
+      final String? title,
+      final String? subtitle,
+      final String? imageUrl,
+      final int? time,
+      final List<ProductInfoDto> products,
+      final List<String> tabs}) = _$ViewModuleDtoImpl;
 
   factory _ViewModuleDto.fromJson(Map<String, dynamic> json) =
       _$ViewModuleDtoImpl.fromJson;
 
   @override
-  String get type;
+  String? get type;
   @override
-  String get title;
+  String? get title;
   @override
-  String get subtitle;
+  String? get subtitle;
   @override
-  String get imgUrl;
+  String? get imageUrl;
+  @override
+  int? get time;
+  @override
+  List<ProductInfoDto> get products;
+  @override
+  List<String> get tabs;
   @override
   @JsonKey(ignore: true)
   _$$ViewModuleDtoImplCopyWith<_$ViewModuleDtoImpl> get copyWith =>

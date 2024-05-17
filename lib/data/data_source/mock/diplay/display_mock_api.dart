@@ -1,7 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../dto/common/response_wrapper/response_wrapper.dart';
 import '../../../dto/display/menu/menu.dto.dart';
@@ -25,30 +22,17 @@ class DisplayMockApi implements DisplayApi {
     );
   }
 
-  List<MenuDto> _menuParser(String source) {
-    List<MenuDto> menus = [];
-    final List json = jsonDecode(source);
-
-    menus = json.map((e) => MenuDto.fromJson(e)).toList();
-    return menus;
-  }
-
   @override
-  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulesByTabId(int tabId) {
-    final endOfTabId = tabId % 10;
-    late String source;
-    switch (endOfTabId) {
-      case 1:
-        source = DisplayMockData.viewModulesByTabIdCaseOne;
-      case 2:
-        source = DisplayMockData.viewModulesByTabIdCaseTwo;
-      case 3:
-        source = DisplayMockData.viewModulesByTabIdCaseThree;
-      case 4:
-        source = DisplayMockData.viewModulesByTabIdCaseFour;
-      case 5:
-        source = DisplayMockData.viewModulesByTabIdCaseFive;
+  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulesByTabId(int tabId, int page) {
+    if (page == 4) {
+      return Future(() => ResponseWrapper(
+            status: 'SUCCESS',
+            code: '0000',
+            message: '',
+            data: [],
+          ));
     }
+    String source = DisplayMockData.getViewModules();
 
     return Future(() => ResponseWrapper(
           status: 'SUCCESS',
@@ -63,6 +47,16 @@ class DisplayMockApi implements DisplayApi {
     final List json = jsonDecode(source);
 
     viewModules = json.map((e) => ViewModuleDto.fromJson(e)).toList();
+
     return viewModules;
+  }
+
+  List<MenuDto> _menuParser(String source) {
+    List<MenuDto> menus = [];
+    final List json = jsonDecode(source);
+
+    menus = json.map((e) => MenuDto.fromJson(e)).toList();
+
+    return menus;
   }
 }

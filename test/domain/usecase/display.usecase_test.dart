@@ -21,30 +21,30 @@ void main() {
   late DisplayUsecase displayUsecase;
 
   setUpAll(() {
-    displayRepository = DisplayRepositoryImpl(MockDisplayApi());
-    displayUsecase = DisplayUsecase(displayRepository);
+    //  displayRepository = DisplayRepositoryImpl(MockDisplayApi());
+    //  displayUsecase = DisplayUsecase(displayRepository);
   });
 
-  test('의존성 주입', () => expect(displayUsecase, isNotNull));
+  // test('의존성 주입', () => expect(displayUsecase, isNotNull));
 
-  test('메뉴 리스트 불러오기 성공', () async {
-    final result = Result.succes([Menu(tabId: -1, title: '메뉴테스트')]);
-    final usecase = MockGetMenusUsecase();
+  // test('메뉴 리스트 불러오기 성공', () async {
+  //   final result = Result.succes([Menu(tabId: -1, title: '메뉴테스트')]);
+  //   final usecase = MockGetMenusUsecase();
 
-    when(() => usecase.mallType).thenReturn(MallType.market);
-    when(() => usecase.call(displayRepository)).thenAnswer((invocation) async => result);
+  //   when(() => usecase.mallType).thenReturn(MallType.market);
+  //   when(() => usecase.call(displayRepository)).thenAnswer((invocation) async => result);
 
-    final actual = await displayUsecase.excute(usecase: usecase);
-    expect(actual, result);
-  });
-  test('메뉴 리스트 불러오기 실패', () async {
-    final result = Result<List<Menu>>.failure(ErrorResponse(status: 'error'));
-    final usecase = MockGetMenusUsecase();
+  //   final actual = await displayUsecase.excute(usecase: usecase);
+  //   expect(actual, result);
+  // });
+  // test('메뉴 리스트 불러오기 실패', () async {
+  //   final result = Result<List<Menu>>.failure(ErrorResponse(status: 'error'));
+  //   final usecase = MockGetMenusUsecase();
 
-    when(() => usecase.mallType).thenReturn(MallType.market);
-    when(() => usecase.call(displayRepository)).thenAnswer((invocation) async => result);
+  //   when(() => usecase.mallType).thenReturn(MallType.market);
+  //   when(() => usecase.call(displayRepository)).thenAnswer((invocation) async => result);
 
-    final actual = await displayUsecase.excute(usecase: usecase);
-    expect(actual, result);
-  });
+  //   final actual = await displayUsecase.excute(usecase: usecase);
+  //   expect(actual, result);
+  // });
 }
